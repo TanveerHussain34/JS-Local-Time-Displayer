@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Your Local Time</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: #212121;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #clock {
+        font-size: 64px;
+        background-color: orange;
+        padding: 16px 64px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      #banner {
+        font-size: 64px;
+      }
+      @media (max-width: 650px) {
+        #clock {
+          font-size: 48px;
+          padding: 12px 48px;
+        }
+        #banner {
+          font-size: 48px;
+        }
+      }
+      @media (max-width: 450px) {
+        #clock {
+          font-size: 32px;
+          padding: 10px 36px;
+        }
+        #banner {
+          font-size: 32px;
+        }
+      }
+      @media (max-width: 300px) {
+        #clock {
+          font-size: 24px;
+          padding: 8px 24px;
+        }
+        #banner {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="banner">Your Local Time</div>
+      <div id="clock"></div>
+    </div>
+  </body>
+  <script>
+    const colors = [
+      "red",
+      "orange",
+      "#00008B",
+      "green",
+      "blue",
+      "purple",
+      "#FF00FF",
+      "brown",
+      "#808000",
+      "black",
+    ];
+    let clock = document.getElementById("clock");
+    setInterval(() => {
+      let date = new Date();
+      let seconds = date.getSeconds();
+      clock.innerHTML = date.toLocaleTimeString();
+      clock.style.backgroundColor = colors[seconds % colors.length];
+    }, 1000);
+  </script>
+</html>
